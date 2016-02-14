@@ -14,26 +14,26 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "cloudantdb"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "cloudantdb",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "cloudantdb",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "cloudantdb",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "cloudantdb",
     "public": false
   },
   "Item": {
-    "dataSource": "db",
+    "dataSource": "cloudantdb",
     "public": true
   }
 }

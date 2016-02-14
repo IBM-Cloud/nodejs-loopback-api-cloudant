@@ -16,6 +16,7 @@
     "loopback-component-explorer": "^2.1.0",
     "loopback-connector-cloudant": "^1.0.4",
     "loopback-datasource-juggler": "^2.39.0",
+    "request": "^2.69.0",
     "serve-favicon": "^2.0.1"
   },
   "devDependencies": {
