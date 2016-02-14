@@ -6,7 +6,7 @@ This projects lets you run your loopback node.js application on Bluemix with a C
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
 
-![concept](./design/real-time-tone.png)
+![concept](./docs/APIExplorer.png)
 
 This application is designed to be used as a microservice. You can reuse this application in combination with to other application(s) to manage any json data. For example, you might have a front end UI application written in any language and you can use this API as your backend. You can also use this application as part of your mobile solution. 
 
@@ -39,11 +39,11 @@ This application is designed to be used as a microservice. You can reuse this ap
 
 8. Log into your Cloudant dashbaord by clicking *Manage* -> *Launch* and create a new database. Call it "mydb"
 
-  ![cloudantCreateDB](./design/CloudantCreateDB.png)
+  ![cloudantCreateDB](./docs/CloudantCreateDB.png)
 
 9. Back in the Bluemix UI, click on *Service Credentials* and generate credentials
 
-  ![cloudant](./design/CloudantServiceCredentials.png)
+  ![cloudant](./docs/CloudantServiceCredentials.png)
   
 
 10. Add these credentials to server/datasources.json
@@ -63,7 +63,7 @@ This application is designed to be used as a microservice. You can reuse this ap
   $ cf push
   ```
 
-And voila! You now have your very own REST API!.
+And voila! You now have your very own REST API! at YOURAPPNAME.mybluemix.net/api/Items . You can use the API Explorer to easily insert, delete, or update items: YOURAPPNAME.mybluemix.net/explorer
 
 ## Troubleshooting
 
