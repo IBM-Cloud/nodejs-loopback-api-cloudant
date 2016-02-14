@@ -56,7 +56,7 @@ And voila! You now have your very own REST API! at YOURAPPNAME.mybluemix.net/api
 The primary source of debugging information for your Bluemix app is the logs. To see them, run the following command using the Cloud Foundry CLI:
 
   ```
-  $ cf logs realtime-tone --recent
+  $ cf logs nodejsLoopbackAPI --recent
   ```
 For more detailed information on troubleshooting your application, see the [Troubleshooting section](https://www.ng.bluemix.net/docs/troubleshoot/tr.html) in the Bluemix documentation.
 
