@@ -35,14 +35,17 @@ This application is designed to be used as a microservice. You can reuse this ap
   $ cf login
   ```
 
-7. Create a Cloudant database service in Bluemix UI and generate credentials
+7. Create a Cloudant database service in Bluemix UI.
 
-  ```
-  $ cf create-service speech_to_text standard rtt-speech-to-text
-  ```
-8. Log into your Cloudant dashbaord and create a new database. Call it "mydb"
+8. Log into your Cloudant dashbaord by clicking *Manage* -> *Launch* and create a new database. Call it "mydb"
 
-8. Add your credentials to server/datasources.json
+![cloudantCreateDB](./design/CloudantCreateDB.png)
+
+9. Back in the Bluemix UI, click on *Service Credentials* and generate credentials
+
+![cloudant](./design/CloudantServiceCredentials.png)
+
+8. Add these credentials to server/datasources.json
 ```
 "mydb": {
   "name": "mydb",
