@@ -37,26 +37,10 @@ This application is designed to be used as a microservice. You can reuse this ap
   $ cf login
   ```
 
-7. Create a Cloudant database service in Bluemix UI.
+7. Create the Cloudant service in Bluemix
 
-8. Log into your Cloudant dashbaord by clicking *Manage* -> *Launch* and create a new database. Call it "mydb"
-
-  ![cloudantCreateDB](./docs/CloudantCreateDB.png)
-
-9. Back in the Bluemix UI, click on *Service Credentials* and generate credentials
-
-  ![cloudant](./docs/CloudantServiceCredentials.png)
-  
-
-10. Add these credentials to server/datasources.json
   ```
-  "mydb": {
-    "name": "mydb",
-    "connector": "cloudant",
-    "username": "XXXX-bluemix",
-    "password": "YYYYYYYYYYYY",
-    "database": "mydb"
-  }
+  $ cf create-service cloudantNoSQLDB Shared loopback-db
   ```
 
 11. Push the app to Bluemix.
