@@ -6,6 +6,8 @@ This projects lets you run your loopback node.js application on Bluemix with a C
 
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy)
 
+![concept](./docs/API.png)
+
 ![concept](./docs/APIExplorer.png)
 
 This application is designed to be used as a microservice. You can reuse this application in combination with to other application(s) to manage any json data. For example, you might have a front end UI application written in any language and you can use this API as your backend. You can also use this application as part of your mobile solution. 
