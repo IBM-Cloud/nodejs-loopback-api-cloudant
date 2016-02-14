@@ -39,13 +39,13 @@ This application is designed to be used as a microservice. You can reuse this ap
 
 8. Log into your Cloudant dashbaord by clicking *Manage* -> *Launch* and create a new database. Call it "mydb"
 
-![cloudantCreateDB](./design/CloudantCreateDB.png)
+![cloudant](./design/CloudantServiceCredentials.png)
 
 9. Back in the Bluemix UI, click on *Service Credentials* and generate credentials
 
-![cloudant](./design/CloudantServiceCredentials.png)
+![cloudantCreateDB](./design/CloudantCreateDB.png)
 
-8. Add these credentials to server/datasources.json
+10. Add these credentials to server/datasources.json
 ```
 "mydb": {
   "name": "mydb",
@@ -56,7 +56,7 @@ This application is designed to be used as a microservice. You can reuse this ap
 }
 ```
 
-9. Push the app to Bluemix.
+11. Push the app to Bluemix.
 
   ```
   $ cf push
