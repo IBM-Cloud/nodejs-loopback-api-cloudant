@@ -18,7 +18,7 @@ request.put(url + "/" + databaseName).on('error', function(err) {
   })
 
 module.exports = {
-  "cloudantdb": {
+  "db": {
 	  "connector": "cloudant",
 	  "url": url,
 	  "database": databaseName
