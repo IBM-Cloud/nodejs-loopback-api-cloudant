@@ -131,6 +131,22 @@ Start the server!
 Your REST API is available at: http://0.0.0.0:3000/api/Items
 Your API Explorer API at http://0.0.0.0:3000/explorer
 
+#### Push to Bluemix
+We don't want to push the `node_modules` folder to Bluemix. So, lets create a .cfignore file
+From the myLoopbackAPI folder:
+```
+echo node_modules >> .cfignore
+```
+Then, Push to Bluemix.
+```
+cf push PickAName
+```
+This will fail because it needs a Cloudant database.
+
+Go to your Bluemix UI, click on your application, `Bind a Service` and choose the Cloudant database you chose before. You'll be prompoted to restage. Click Yes. After that completes:
+
+Your REST API is available at: http://PickAName.mybluemix.net/api/Items
+Your API Explorer API at http://PickAName.mybluemix.net/explorer
 
 ## Troubleshooting
 
@@ -144,28 +160,3 @@ For more detailed information on troubleshooting your application, see the [Trou
 ## Contribute
 We are more than happy to accept external contributions to this project, be it in the form of issues and pull requests. If you find a bug, please report it via the [Issues section][issues_url] or even better, fork the project and submit a pull request with your fix! Pull requests will be evaulated on an individual basis based on value add to the sample application.
 
-## Privacy Notice
-The capital-weather sample web application includes code to track deployments to Bluemix and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/cloudant-labs/deployment-tracker) service on each deployment:
-
-* Application Name (application_name)
-* Space ID (space_id)
-* Application Version (application_version)
-* Application URIs (application_uris)
-
-This data is collected from the VCAP_APPLICATION environment variable in IBM Bluemix and other Cloud Foundry platforms. This data is used by IBM to track metrics around deployments of sample applications to IBM Bluemix. Only deployments of sample applications that include code to ping the Deployment Tracker service will be tracked.
-
-### Disabling Deployment Tracking
-
-Deployment tracking can be disabled by removing `require("cf-deployment-tracker-client").track();` from the beginning of the `app.js` file.
-
-
-[speech_service_url]: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/speech-to-text.html
-[speech_service_bluemix_url]: https://console.ng.bluemix.net/catalog/services/speech-to-text/
-[tone_service_url]: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/tone-analyzer.html
-[tone_service_bluemix_url]: https://console.ng.bluemix.net/catalog/services/tone-analyzer/
-[bluemix_url]: http://ibm.biz/realtime-tone-bluemix
-[bluemix_signup_url]: http://ibm.biz/realtime-tone-signup
-[cloud_foundry_url]: https://github.com/cloudfoundry/cli
-[download_node_url]: https://nodejs.org/download/
-[browserify_url]: http://browserify.org/
-[issues_url]: https://github.com/IBM-Bluemix/real-time-tone-analysis/issues
