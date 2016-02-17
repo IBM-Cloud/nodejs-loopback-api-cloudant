@@ -13,7 +13,7 @@ This projects lets you run your loopback node.js application on Bluemix with a C
 This application is designed to be used as a microservice. You can reuse this application in combination with to other application(s) to manage any json data. For example, you might have a front end UI application written in any language and you can use this API as your backend. You can also use this application as part of your mobile solution. 
 
 ## Let's get started!
-
+### Option 1: Start from this repo
 1. If you do not already have a Bluemix account, [sign up here][bluemix_signup_url]
 
 2. Download and install the [Cloud Foundry CLI][cloud_foundry_url] tool
@@ -50,6 +50,87 @@ This application is designed to be used as a microservice. You can reuse this ap
   ```
 
 And voila! You now have your very own REST API! at YOURAPPNAME.mybluemix.net/api/Items . You can use the API Explorer to easily insert, delete, or update items: YOURAPPNAME.mybluemix.net/explorer
+
+### Option 2: Start from scratch! Develop locally and push to Bluemix (recommended)
+
+Open your teminal and follow the steps below:
+```
+npm install -g strongloop
+? What's the name of your application? `myLoopbackAPI`
+? Enter name of the directory to contain the project: `myLoopbackAPI`
+
+cd myLoopbackAPI
+
+npm install loopback-connector-cloudant --save
+
+slc loopback:model
+? Enter the model name: Item
+? Select the data-source to attach Item to: db (memory)
+? Select model's base class (Use arrow keys) ❯ PersistedModel 
+? Expose Item via the REST API? (Y/n) Y
+? Custom plural form (used to build REST URL): Items
+? Common model or server only? (Use arrow keys) common
+? Property name: name
+? Property type: (Use arrow keys) string
+? Required? Y
+<enter> when done
+```
+You're API is ready, but its currently using an in-memory database. If you restart your application, all data will be lost! Let's fix that by using a Cloudant database from Bluemix. Cloudant is a NoSQL database.
+#### Use Cloudant Database
+
+Update server/datasources.json to just:
+```
+{ }
+```
+Create the file server/datasources.local.js and add this code:
+```
+var http = require('http');
+var request = require('request');
+
+//Local Development
+//Enter your Cloudant URL here. Get this from your Bluemix Cloudant service by clicking on "Show Credentials" or "Service Credentials".
+var url = "PUT_URL_HERE";
+var databaseName = "mydb"; //You need to log into Cloudant Dashbaord and create this database
+
+//Running on Bluemix. Gets the Cloudant credentials from VCAP_SERVICES env variable
+if(process.env.VCAP_SERVICES){
+	var vcap_services = JSON.parse(process.env.VCAP_SERVICES);
+	url = vcap_services.cloudantNoSQLDB[0].credentials.url;
+}
+
+//Create the database (mydb) if it doesn't exist.
+request.put(url + "/" + databaseName).on('error', function(err) {
+    console.log("ERROR CREATING DATABSE: " + err);
+  })
+
+module.exports = {
+  "db": {
+	  "connector": "cloudant",
+	  "url": url,
+	  "database": databaseName
+	}
+};
+```
+Create a Cloudant database service in Bluemix UI.
+
+Back in the Bluemix UI, click on *Service Credentials* and generate credentials
+
+![cloudant](./docs/CloudantServiceCredentials.png)
+
+Copy the `url` field from credentials to server/datasources.local.js
+```
+var url = "PUT_URL_HERE";
+```
+Next, install some dependencies:
+```
+npm install request --save
+```
+Start the server!
+`node .` from your myLoopbackAPI directory
+
+Your REST API is available at: http://0.0.0.0:3000/api/Items
+Your API Explorer API at http://0.0.0.0:3000/explorer
+
 
 ## Troubleshooting
 
