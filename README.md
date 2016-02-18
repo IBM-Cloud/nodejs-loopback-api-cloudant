@@ -57,8 +57,8 @@ Open your teminal and follow the steps below:
 ```
 npm install -g strongloop
 slc loopback
-? What's the name of your application? `myLoopbackAPI`
-? Enter name of the directory to contain the project: `myLoopbackAPI`
+? What's the name of your application? myLoopbackAPI
+? Enter name of the directory to contain the project: myLoopbackAPI
 
 cd myLoopbackAPI
 
