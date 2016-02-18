@@ -56,6 +56,7 @@ And voila! You now have your very own REST API! at YOURAPPNAME.mybluemix.net/api
 Open your teminal and follow the steps below:
 ```
 npm install -g strongloop
+slc loopback
 ? What's the name of your application? `myLoopbackAPI`
 ? Enter name of the directory to contain the project: `myLoopbackAPI`
 
